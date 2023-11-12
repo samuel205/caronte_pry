@@ -6,3 +6,4 @@ class Pokemon(models.Model):
 
     class Meta:
         unique_together = ('name',)
+        ordering = ('id',)

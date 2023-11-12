@@ -18,8 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from caronte import settings
+
+
+class BaseView(TemplateView):
+    template_name = 'base_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['URL_COMPLETE'] = 'http://127.0.0.1:8000' if settings.DEBUG else 'http://sveram.pythonanywhere.com'
+        # Agrega cualquier otro dato que desees pasar al contexto
+        return context
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'api/', include('pokemon.urls')),
-    path('', TemplateView.as_view(template_name='base_view.html'), name='base'),
+    path('', BaseView.as_view(), name='base'),
 ]
