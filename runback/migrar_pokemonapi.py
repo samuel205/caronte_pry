@@ -7,7 +7,9 @@ import requests
 from django.db import transaction
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('/home/sveram/caronte_pry')
+project_home = '/home/sveram/caronte_pry'
+if project_home not in sys.path:
+    sys.path.insert(0, project_home)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'caronte.settings')
 application = get_wsgi_application()
 # Configura Django
