@@ -3,14 +3,15 @@ import os
 import sys
 
 import django
+import requests
+from django.db import transaction
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'caronte.settings')
 application = get_wsgi_application()
 # Configura Django
 django.setup()
-import requests
-from django.db import transaction
+
 from pokemon.models import Pokemon
 
 pagination_offset = 0

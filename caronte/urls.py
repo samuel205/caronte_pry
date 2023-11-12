@@ -26,7 +26,7 @@ class BaseView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['URL_COMPLETE'] = 'http://127.0.0.1:8000' if settings.DEBUG else 'http://sveram.pythonanywhere.com'
+        context['URL_COMPLETE'] = 'http://127.0.0.1:8000' if settings.DEBUG else 'https://sveram.pythonanywhere.com'
         # Agrega cualquier otro dato que desees pasar al contexto
         return context
 urlpatterns = [
